@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+        
+        
+</head>
+
+<body>
+    <!-- Navbar Starts -->
+    <div className="navbarNav">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <h6 class="logo fw-bold fs-1">practo</h6>
+                <!-- <img class="img-fluid" src="data:image/png;base64,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" alt="" /> -->
+                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler" data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse"
+                    type="button">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ulbar ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Find Doctors
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Video Consult
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Medicines
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Lab Tests
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                Surgeries
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            For Corporates
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Health & Wellness Plans
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Group Insurence
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            For Providers
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Practo Prime
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Software for providers
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    List your practice for free
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    ABDM
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Security&help
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Data secuirity
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Help
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div className="loginbtn">
+                        <button class="btn btn-outline-info">Login/Signup</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!-- Navbar Ends -->
+
+
+    <!-- BannerOne Starts  -->
+
+
+    <div class="bannerLocSearch">
+        <div className="bannerLoc">
+            <input type="text" placeholder="📍location" class="form-control name=" search" id="srch" />
+        </div>
+        <div class="search-box">
+            <form>
+                <input type="text" class="form-control" name="search" id="srch" placeholder="🔍Search" />
+            </form>
+        </div>
+    </div>
+
+    <div class="MarginWidth">
+        <div class="bannerImage">
+            <img class="img-fluid"
+                src="https://s3.ap-southeast-1.amazonaws.com/www.practostatic.com/consumer-home/desktop/images/1597423628/chronic_consumer_banner_dweb.png"
+                alt="">
+        </div>
+
+        <br>
+        <br>
+
+        
+        <div class="justify-content-center mt-4 ls-3 container-fluid row">
+            <div class="card border rounded-4 p-0 m-2 col-lg-2 col-md-2 col-sm-4" style="width: 13rem; height: 16rem;">
+                <img class="bg-info-subtle border rounded-top-4 card-img-top h-50 " src="https://www.practostatic.com/consumer-home/desktop/images/1597423628/dweb_instant_video_consulation.png" alt="Card image cap">
+                <div class="card-body">
+                  <h6 class="card-title">Instant Video Consultation</h6>
+                  <p class="card-text">Connect within 60secs</p>
+                </div>
+              </div>
+              <div class="card border rounded-4 p-0 m-2 col-lg-2 col-md-2 col-sm-4" style="width: 13rem; height: 16rem;">
+                <img class="bg-info-subtle border rounded-top-4 card-img-top h-50 " src="https://www.practostatic.com/consumer-home/desktop/images/1597423628/dweb_find_doctors.png" alt="Card image cap">
+                <div class="card-body">
+                  <h6 class="card-title">Find Doctors Near You</h6>
+                  <p class="card-text">Confirmed appointments</p>
+        
+                </div>
+              </div>
+              <div class="card border rounded-4 p-0 m-2 col-lg-2 col-md-2 col-sm-4" style="width: 13rem; height: 16rem;">
+                <img class="bg-info-subtle border rounded-top-4 card-img-top h-50 " src="https://www.practostatic.com/consumer-home/desktop/images/1597423628/dweb_medicines.png" alt="Card image cap">
+                <div class="card-body">
+                  <h6 class="card-title">Medicines</h6>
+                  <p class="card-text">Essential at your doorstep</p>
+                </div>
+              </div>
+              <div class="card border rounded-4 p-0 m-2 col-lg-2 col-md-2 col-sm-4" style="width: 13rem; height: 16rem;">
+                <img class="bg-info-subtle border rounded-top-4 card-img-top h-50 " src="https://www.practostatic.com/consumer-home/desktop/images/1597423628/dweb_lab_tests.png" alt="Card image cap">
+                <div class="card-body">
+                  <h6 class="card-title">Lab Tests</h6>
+                  <p class="card-text">Sample pickup with your home</p>
+                </div>
+              </div>
+              <div class="card border rounded-4 p-0 m-2 col-lg-2 col-md-2 col-sm-4" style="width: 13rem; height: 16rem;">
+                <img class="bg-info-subtle border rounded-top-4 card-img-top h-50 " src="https://www.practostatic.com/consumer-home/desktop/images/1597423628/dweb_surgeries.png" alt="Card image cap">
+                <div class="card-body">
+                  <h6 class="card-title">Surgeries</h6>
+                  <p class="card-text">Safe and trusted surgery centers</p>
+                </div>
+              </div>
+        </div>
+
+    <!-- BannerOne Ends -->
+
+    <br><br><br>
+
+    <!-- Consult Doctors Start -->
+
+    <div class="bannerHeader">
+        <div class="bannerSecondHeader">
+            <h4 class="card-body">Consult top doctors online for any health concern</h4>
+            <p class="card-body">
+              Private online consultations with verified doctors in all
+              specialists.
+            </p>
+          </div>
+          <div class="bannerSecondBtn">
+            <button class="btn btn-outline-info">View all Specilities</button>
+          </div>
+    </div>
+
+    
+    <div class="justify-content-around mt-4 text-center row">
+        <div class="card border-0 p-0 m-2 col-lg-2 col-md-2 col-sm-1" style="width: 9rem; height: 14rem;">
+            <img class="card-img-top m-auto mt-1 h-50 justify-content-center " style="width: 7rem; " src="https://www.practostatic.com/consult/consult-home/symptoms_icon/irregular-painful+period.png" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="card-title">Period doubts or Pregnency</h6>
+              <p class="card-text text-info">CONSULT NOW</p>
+            </div>
+          </div>
+          <div class="card border-0 p-0 m-2 col-lg-2 col-md-2 col-sm-12" style="width: 9rem; height: 14rem;">
+            <img class=" card-img-top m-auto mt-1 h-50 justify-content-center " style="width: 7rem;" src="https://www.practostatic.com/consult/consult-home/symptoms_icon/Acne.png" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="card-title">Acne,pimple or skin issues</h6>
+              <p class="card-text text-info">CONSULT NOW</p>
+    
+            </div>
+          </div>
+          <div class="card border-0 p-0 m-2 col-lg-2 col-md-2 col-sm-12" style="width: 9rem; height: 14rem;">
+            <img class=" card-img-top m-auto mt-1 h-50 justify-content-center " style="width: 7rem;" src="https://www.practo.com/consult/static/images/top-speciality-sexology.svg" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="card-title">Performance issues in bed</h6>
+              <p class="card-text text-info">CONSULT NOW</p>
+            </div>
+          </div>
+          <div class="card border-0 p-0 m-2 col-lg-2 col-md-2 col-sm-12" style="width: 9rem; height: 14rem;">
+            <img class=" card-img-top m-auto mt-1 h-50 justify-content-center " style="width: 7rem;" src="https://www.practostatic.com/consult/consult-home/symptoms_icon/coughing.png" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="card-title">Cold,cough or fever</h6>
+              <p class="card-text text-info">CONSULT NOW</p>
+            </div>
+          </div>
+          <div class="card border-0 p-0 m-2 col-lg-2 col-md-2 col-sm-12" style="width: 9rem; height: 14rem;">
+            <img class=" card-img-top m-auto mt-1 h-50 justify-content-center " style="width: 7rem;" src="https://www.practo.com/consult/static/images/top-speciality-pediatric.svg" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="card-title">Child not feeling well</h6>
+              <p class="card-text text-info">CONSULT NOW</p>
+            </div>
+          </div>
+          <div class="card border-0 p-0 m-2 col-lg-2 col-md-2 col-sm-12" style="width: 9rem; height: 14rem;">
+            <img class=" card-img-top m-auto mt-1 h-50 justify-content-center " style="width: 7rem;" src="https://www.practostatic.com/acred/search-assets/2/12-mental-wellness.png" alt="Card image cap">
+            <div class="card-body">
+              <h6 class="card-title">Depression or anxiety</h6>
+              <p class="card-text text-info">CONSULT NOW</p>
+            </div>
+          </div>
+    </div>
+
+    <!-- Consult Doctors Ends -->
+
+    <br><br>
+
+    <!-- Carousel Starts -->
+
+    <div
+      id="myCarousel"
+      class="carousel slide container m-auto"
+      data-bs-ride="carousel"
+    >
+      <h5 class="title">Book an appointment for an in-clinic consultation</h5>
+      <p class="para">Find experienced doctors across all specialties</p>
+      <div class="carousel-inner w-100">
+        <div class="carousel-item  active">
+          <div class="col-md col-sm-12">
+            <a href="" class="cards card-link text-decoration-none text-dark">
+              <div class="border-0 card card-body">
+                <div class="card" style="width: 18rem">
+                  <img
+                    style="height: 10rem"
+                    class="card-img-top"
+                    src="https://www.practostatic.com/consumer-home/desktop/images/1558283618/sp-dentist@2x.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <h6>Dentist</h6>
+                    <p class="card-text">
+                      Teething troubles? Schedule a dental checkup
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="carousel-item" >
+          <div class="col-md col-sm-12">
+            <a href="" class="cards text-decoration-none text-dark">
+              <div class="card border-0 card-body">
+                <div class="card" style="width: 18rem">
+                  <img
+                    style="height: 10rem"
+                    class="card-img-top"
+                    src="https://www.practostatic.com/consumer-home/desktop/images/1558283618/sp-gynecologist@2x.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <h6>Gynecologist/Obstetrician</h6>
+                    <p class="card-text">
+                      Explore for women's health, pregnancy and infertility
+                      treatments
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="carousel-item" >
+          <div class="col-md col-sm-12">
+            <a href="" class="cards text-decoration-none text-dark">
+              <div class="card border-0 card-body">
+                <div class="card" style="width: 18rem">
+                  <img
+                    style="height: 10rem"
+                    class="card-img-top"
+                    src="https://www.practostatic.com/consumer-home/desktop/images/1558283618/sp-dietitian@2x.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <h6>Dietitian/Nutrition</h6>
+                    <p class="card-text">
+                      Get guidance on eating right, weight and sports nutrition
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="carousel-item" >
+          <div class="col-md col-sm-12">
+            <a href="" class="cards text-decoration-none text-dark">
+              <div class="card border-0 card-body">
+                <div class="card" style="width: 18rem">
+                  <img
+                    style="height: 10rem"
+                    class="card-img-top"
+                    src="https://www.practostatic.com/consumer-home/desktop/images/1558283618/sp-physiotherapist@2x.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <h6>Physiotherapist</h6>
+                    <p class="card-text">
+                      Pulled a muscle? Get it treated by a trained
+                      physiotherapist
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="carousel-item" >
+          <div class="col-md col-sm-12">
+            <a href="" class="cards text-decoration-none text-dark">
+              <div class="card border-0 card-body">
+                <div class="card" style="width: 18rem">
+                  <img
+                    style="height: 10rem"
+                    class="card-img-top"
+                    src="https://www.practostatic.com/consumer-home/desktop/images/1558283618/sp-general-surgeon@2x.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <h6>General surgeon</h6>
+                    <p class="card-text">
+                      Need to get operated? Find the right surgeon
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="carousel-item" >
+          <div class="col-md col-sm-12">
+            <a href="" class="cards text-decoration-none text-dark">
+              <div class="card border-0 card-body">
+                <div class="card" style="width: 18rem">
+                  <img
+                    style="height: 10rem"
+                    class="card-img-top"
+                    src="https://www.practostatic.com/consumer-home/desktop/images/1558283618/sp-orthopedist@2x.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <h6>Orthopedist</h6>
+                    <p class="card-text">
+                      For Bone and Joints issues, spinal injuries and more
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="carousel-item" >
+          <div class="col-md col-sm-12">
+            <a href="" class="cards text-decoration-none text-dark">
+              <div class="card border-0 card-body">
+                <div class="card" style="width: 18rem">
+                  <img
+                    style="height: 10rem"
+                    class="card-img-top"
+                    src="https://www.practostatic.com/consumer-home/desktop/images/1558283618/sp-general-doctor@2x.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <h6>General physician</h6>
+                    <p class="card-text">
+                      Find the right family doctor in your neighborhood
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="carousel-item" >
+          <div class="col-md col-sm-12">
+            <a href="" class="cards text-decoration-none text-dark">
+              <div class="card border-0 card-body">
+                <div class="card" style="width: 18rem">
+                  <img
+                    style="height: 10rem"
+                    class="card-img-top"
+                    src="https://www.practostatic.com/consumer-home/desktop/images/1558283618/sp-pediatrician@2x.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <h6>Pediatrician</h6>
+                    <p class="card-text">
+                      Child Specialists and Doctors for Infant
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="carousel-item" >
+          <div class="col-md col-sm-12">
+            <a href="" class="cards text-decoration-none text-dark">
+              <div class="card border-0 card-body">
+                <div class="card" style="width: 18rem">
+                  <img
+                    style="height: 10rem"
+                    class="card-img-top"
+                    src="https://www.practostatic.com/consumer-home/desktop/images/1558283618/sp-gastroenterologist@2x.jpg"
+                    alt="Card image cap"
+                  />
+                  <div class="card-body">
+                    <h6>Gastroenterologist</h6>
+                    <p class="card-text">
+                      Explore for issues related to digestive system, liver and
+                      pancreas
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev btn btn-close-white rounded-circle h-25 m-auto"
+        type="button"
+        data-bs-target="#myCarousel"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next btn btn-close-white rounded-circle h-25 m-auto"
+        type="button"
+        data-bs-target="#myCarousel"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    
+    <!-- Carousel Ends -->
+
+    <br><br>
+
+    <!-- Aricles Start -->
+
+    <hr>
+
+    <div class="articles">
+        <div class="articlesDivOne mt-5 container container-fluid">
+            <h2>Read top articles from health experts</h2>
+            <p>Find experienced doctors across all specialties</p>
+
+            <div class="articlesbtn">
+                <a href="" class="articlesBtn  text-decoration-none text-light">See all articles</a>
+            </div>
+        </div>
+        <div class="articlesDivTwo  mt-4">
+            <div class="caronaVirusArticles  mx-2">
+                <div className="bannerFiveImg1">
+                    <img  class="img-fluid" src="https://www.practostatic.com/fit/5fd27b74d9477cb633445cf3f105078bbc479910" alt="" />
+                    
+                    <p className='text text-info'> <a href="./SecondPage.html" class="text-decoration-none text-dark">CORONAVIRUS</a></p>
+                    <h6>12 Coronavirus Myths and Facts That Ypu Should Be Aware Of</h6>
+                    <p>Dr.Diana Borgio</p>
+                </div>
+            </div>
+            <div class="vitaminsArticle">
+                <div className="bannerFiveImg1">
+                    <img class="img-fluid" src="https://www.practostatic.com/fit/bade52edc7fb158bf627216bf96c2b881a97f30c" alt="" />
+                    <p className='text text-info'>VITAMINS AND SUPPLIMENTS</p>
+                    <h6>Eating Right To Build Immunity Against Cold and Viral Infections</h6>
+                    <p>Dr.Diana Borgio</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+    <!-- Articles Ends -->
+
+
+    <!-- CarouselSecond Starts -->
+
+
+    <div class="img-slider">
+        <div class="slide active">
+          <img src="1.jpg" alt="">
+          <div class="info">
+            <h1>What our users have to say</h1>
+            <P>Very helpful. Far easier than doing same things on computer. Allows quick and easy search with speedy booking. Even maintains history of doctors visited.</P>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="2.jpg" alt="">
+          <div class="info">
+            <h1>What our users have to say</h1>
+            <P>Very good app. Well thought out about booking/rescheduling/canceling an appointment. Also, Doctor's feedback mechanism is good and describes all the basics in a good way</P>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="3.jpg" alt="">
+          <div class="info">
+            <h1>What our users have to say</h1>
+            <P>Very easy to book,maintain history. Hassle free from older versions of booking appointment via telephone.. Thanks Practo for making it simple.</P>
+          </div>
+        </div>
+        
+        <div class="navigation">
+          <div class="btn active"></div>
+          <div class="btn"></div>
+          <div class="btn"></div>
+        </div>
+      </div>
+  
+    <!-- Carousel Ends -->
+
+
+    <!-- procto app starts -->
+
+    <div class="proctBanner">
+        <div class="proctoDoctorImg">
+            <img src="https://www.practostatic.com/consumer-home/desktop/images/1597423628/footer-img.png" alt="">
+        </div>
+
+        <div class="proctoInfoBanner  mx-5">
+            <h1>Download the Practo app</h1>
+            <p>Access video consultation with India’s top doctors on the Practo app. Connect with doctors online, available 24/7, from the comfort of your home.</p>
+
+        <div class="proctoInformation mt-5">
+            <h3>Get the link to download the app</h3>
+            <div class="inputBoxOfApp">
+                <div class="number">
+                    <input type="text" placeholder="+91" class="form-control">
+                </div>
+                <div class="phonenum">
+                    <input type="text" placeholder="Enter phone number" class="form-control">
+                </div>
+                <div class="btnSMS">
+                    <button class="btn btn-info  mx-2">Send SMS</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stores mt-5">
+            <div class="playStore">
+                <img src="https://www.practostatic.com/consumer-home/desktop/images/1597423628/google_play.png" alt="">
+            </div>
+            <div class="appStore mx-4">
+                <img src="https://www.practostatic.com/consumer-home/desktop/images/1597423628/apple_store.png" alt="">
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- procto app ends -->
+
+    
+</div>
+
+
+    <!-- Footer Starts -->
+    <div
+    class="footers row px-5 py-3 text-light f1"
+    style="background-color: rgb(47, 47, 155)"
+>
+    <div class="navbar navbar-expand-lg col-lg col-mg p-lg-2 d-lg-block" style="background-color: rgb(47, 47, 155)">
+        <h6 class="mb-lg-4">Practo</h6>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent1"
+            aria-controls="navbarSupportedContent1"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="bg-body-emphasis">+</span>
+        </button>
+        <ul class="collapse navbar-collapse list-unstyled nav-links" id="navbarSupportedContent1">
+            <div>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">
+                        Blog
+                    </a>
+                </li>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">
+                        Careers
+                    </a>
+                </li>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">
+                        Press
+                    </a>
+                </li>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">
+                        Contact
+                    </a>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="navbar navbar-expand-lg col-lg col-mg p-lg-2 d-lg-block" style="background-color: rgb(47, 47, 155)">
+    <h6 class="mb-lg-4">For patients</h6>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent2"
+            aria-controls="navbarSupportedContent2"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="bg-body-emphasis">+</span>
+        </button>
+        <ul class="collapse navbar-collapse list-unstyled nav-links" id="navbarSupportedContent2">
+        <div>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">Ask free health questions</a>
+                </li>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">Search for doctors</a>
+                </li>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">Search for clinics</a>
+                </li>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">Search for hospitals</a>
+                </li>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">Read health articles</a>
+                </li>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">Read about medicines</a>
+                </li>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">Consult a doctor</a>
+                </li>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">Order medicines</a>
+                </li>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">Practo Drive</a>
+                </li>
+                <li>
+                    <a class="text-light text-decoration-none fs-14" href="#">Health app</a>
+                </li>
+            </div>
+        </ul>
+    </div>
+    <div class="navbar navbar-expand-lg col-lg col-mg p-lg-2 d-lg-block" style="background-color: rgb(47, 47, 155)">
+    <h6 class="mb-lg-4">For doctors</h6>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent3"
+            aria-controls="navbarSupportedContent3"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="bg-body-emphasis">+</span>
+        </button>
+        <ul class="collapse navbar-collapse list-unstyled nav-links" id="navbarSupportedContent3">
+        <div>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Practo Consult</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Practo Health Feed</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Practo Profile</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">For clinics</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Ray by Practo</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Practo Reach</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Ray Tab</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Practo Pro</a>
+            </li>
+            </div>
+        </ul>
+    </div>
+    <div class="navbar navbar-expand-lg col-lg col-mg p-lg-2 d-lg-block" style="background-color: rgb(47, 47, 155)">
+    <h6 class="mb-lg-4">For hospitals</h6>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent4"
+            aria-controls="navbarSupportedContent4"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="bg-body-emphasis">+</span>
+        </button>
+        <ul class="collapse navbar-collapse list-unstyled nav-links" id="navbarSupportedContent4">
+        <div>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Insta by Practo</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Qikwell by Practo</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Querent by Practo</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Practo Profile</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Practo Reach</a>
+            </li>
+            </div>
+        </ul>
+    </div>
+    <div class="navbar navbar-expand-lg col-lg col-mg p-lg-2 d-lg-block" style="background-color: rgb(47, 47, 155)">
+    <h6 class="mb-lg-4">More</h6>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent5"
+            aria-controls="navbarSupportedContent5"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="bg-body-emphasis">+</span>
+        </button>
+        <ul class="collapse navbar-collapse list-unstyled nav-links" id="navbarSupportedContent5">
+        <div>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Help</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Privacy Policy</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Terms & Conditions</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">PCS T&C</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Subscribers</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Healthcare directory</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Practo Health Wiki</a>
+            </li>
+            </div>
+        </ul>
+    </div>
+    <div class="navbar navbar-expand-lg col-lg col-mg p-lg-2 d-lg-block" style="background-color: rgb(47, 47, 155)">
+    <h6 class="mb-lg-4">Social</h6>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent6"
+            aria-controls="navbarSupportedContent6"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="bg-body-emphasis">+</span>
+        </button>
+        <ul class="collapse navbar-collapse list-unstyled nav-links" id="navbarSupportedContent6">
+        <div>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Facebook</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">Twitter</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">LinkedIn</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">YouTube</a>
+            </li>
+            <li>
+                <a class="text-light text-decoration-none fs-14" href="#">GitHub</a>
+            </li>
+            </div>
+        </ul>
+    </div>
+</div>
+    <!-- Footer Ends -->
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(".carousel .carousel-item").each(function () {
+        var minPerSlide = 4;
+        var next = $(this).next();
+        if (!next.length) {
+          next = $(this).siblings(":first");
+        }
+        next.children(":first-child").clone().appendTo($(this));
+
+        for (var i = 0; i < minPerSlide; i++) {
+          next = next.next();
+          if (!next.length) {
+            next = $(this).siblings(":first");
+          }
+          next.children(":first-child").clone().appendTo($(this));
+        }
+      });
+    </script>
+
+
+
+
+<script type="text/javascript">
+    var slides = document.querySelectorAll('.slide');
+    var btns = document.querySelectorAll('.btn');
+    let currentSlide = 1;
+
+    // Javascript for image slider manual navigation
+    var manualNav = function(manual){
+      slides.forEach((slide) => {
+        slide.classList.remove('active');
+
+        btns.forEach((btn) => {
+          btn.classList.remove('active');
+        });
+      });
+
+      slides[manual].classList.add('active');
+      btns[manual].classList.add('active');
+    }
+
+    btns.forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        manualNav(i);
+        currentSlide = i;
+      });
+    });
+
+    // Javascript for image slider autoplay navigation
+    var repeat = function(activeClass){
+      let active = document.getElementsByClassName('active');
+      let i = 1;
+
+      var repeater = () => {
+        setTimeout(function(){
+          [...active].forEach((activeSlide) => {
+            activeSlide.classList.remove('active');
+          });
+
+        slides[i].classList.add('active');
+        btns[i].classList.add('active');
+        i++;
+
+        if(slides.length == i){
+          i = 0;
+        }
+        if(i >= slides.length){
+          return;
+        }
+        repeater();
+      }, 10000);
+      }
+      repeater();
+    }
+    repeat();
+    </script>
+
+</body>
+
+</html>

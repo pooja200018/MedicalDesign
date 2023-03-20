@@ -1,0 +1,125 @@
+.bannerImageCoverd img{
+    width: 100%;
+}
+
+.banfrstcomp{
+    background-color: white;
+    width: 100%;
+}
+
+.imgInfoOfDoct{
+    display: flex;
+}
+
+.imgDoc img{
+    width: 100%;
+}
+
+
+.banfrstcomp{
+    width: 35%;
+    margin-left: 300px;
+    /* margin-top: -50px; */
+}
+
+.banComp{
+    width: 25%;
+    margin-left: 100px;
+}
+
+.propImgOne img{
+    width: 80%;
+}
+.propImgTwo img{
+    width: 90%;
+}
+.propImgThree img{
+    width: 70%;
+}
+
+.healthProblems{
+    background-color: white;
+    margin-top: 30px;
+}
+
+.healthProblems img{
+    width: 100%;
+}
+
+.doctorOnline{
+    background-color: aquamarine;
+}
+
+.mergedPages{
+    display: flex;
+    background-color: aliceblue;
+}
+
+.healthTipsRelatedQue{
+    background-color: white;
+}
+
+.healthTipsOnline{
+    background-color: white;
+}
+
+.booking{
+    height: 40px;
+}
+
+
+.banlastcomp{
+    height: 100px;
+}
+
+
+@media only screen and (max-width : 900px){
+    .banfrstcomp{
+        width: 90%;
+    }
+
+    .banfrstcomp {
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .banComp{
+        width: 90%;
+        margin-left: 5%;
+    }
+
+    .mergedPages{
+        display: block;
+    }
+
+    .banlastcomp{
+        display: none;
+    }
+
+}
+
+@media only screen and (min-width : 150px) and (max-width : 780px){
+    .imgInfoOfDoct{
+        display: flex;
+    }
+
+    .banfrstcomp{
+        width: 90%;
+    }
+
+
+    .banComp{
+        width: 90%;
+        display: block;
+        margin-left: 5%;
+    }
+
+    .mergedPages{
+        display: block;
+    }
+
+    .banlastcomp{
+        display: none;
+    }
+}
+
